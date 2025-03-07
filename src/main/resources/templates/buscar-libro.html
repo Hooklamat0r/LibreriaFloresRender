@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Libros</title>
+    <link th:href="@{/styles/estilo.css}" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <h1>📚 Librería Flores</h1>
+        <nav class="main-nav">
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/agregar}" sec:authorize="hasRole('ADMIN')">Agregar Libro</a>
+            <a th:href="@{/buscar}">Buscar</a>
+        </nav>
+
+        <form method="POST" th:action="@{/logout}" class="logout-form">
+            <button type="submit" class="btn-logout">🚪 Salir</button>
+        </form>
+    </header>
+
+    <main class="container">
+        <h2>Buscar Libros</h2>
+        
+        <form th:action="@{/buscar}" method="get" class="libro-form">
+            <div class="form-group">
+                <label>Buscar por título o autor:</label>
+                <input type="text" name="query" th:value="${query}">
+            </div>
+            <button type="submit" class="btn">🔍 Buscar</button>
+        </form>
+
+        <div th:if="${mostrarFormulario}" class="sin-resultados">
+            <p>Ingresa un término de búsqueda</p>
+        </div>
+
+        <div th:if="${resultados}" class="resultados-lista">
+            <h3>Resultados para "<span th:text="${query}"></span>"</h3>
+            
+            <div th:each="libro : ${resultados}" class="libro-item">
+                <h4 th:text="${libro.titulo}"></h4>
+                <p class="autor" th:text="${libro.autor}"></p>
+                <p class="detalles">
+                    <span th:text="${libro.año}"></span> - 
+                    <span th:text="${libro.genero}"></span>
+                </p>
+            </div>
+
+            <div th:if="${resultados.empty}" class="sin-resultados">
+                <p>No se encontraron libros con ese criterio</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2024 Librería Digital - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

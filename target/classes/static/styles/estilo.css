@@ -1,0 +1,251 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    min-height: 99.99vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* Header */
+.site-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.main-nav {
+    margin-top: 15px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.main-nav a:hover {
+    background-color: #34495e;
+}
+
+/* Footer fijo */
+.site-footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto; /* Mantiene el footer abajo */
+    width: 98.45%;
+}
+
+/* Tabla de libros */
+.libros-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.libros-table th, .libros-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.libros-table th {
+    background-color: #2c3e50;
+    color: white;
+}
+
+/* Formularios */
+.libro-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #34495e;
+}
+
+/* Resultados de búsqueda */
+.resultados-lista {
+    margin-top: 20px;
+}
+
+.libro-item {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.libro-item h4 {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+}
+
+.autor {
+    color: #666;
+    margin: 0 0 5px 0;
+}
+
+.detalles {
+    color: #888;
+    margin: 0;
+}
+
+.etiqueta {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Estilos para login/registro */
+
+.error-message {
+    color: #dc3545;
+    background: #f8d7da;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.register-link, .login-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link a, .login-link a {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+input[type="password"] {
+    font-family: sans-serif; /* Para ocultar los caracteres correctamente */
+}
+
+/* Estilos acceso denegado */
+
+.error-container {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.error-image {
+    width: 200px;
+    margin: 1.5rem 0;
+}
+
+.error-container h2 {
+    color: #dc3545;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para el botón de logout */
+
+.logout-form {
+    margin-left: 1rem; /* Posicionamiento a la derecha */
+    position: relative;
+}
+
+.btn-logout {
+    background: none;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    /* margin-left: 1px; */
+    transition: all 0.3s;
+    position: absolute;
+    right: 20px;
+    top: -60px;
+}
+
+.btn-logout:hover {
+    background: #dc3545;
+    color: white;
+}
+
+/* Colores tipos */
+
+.nueva { 
+    background: #ffeb3b; color: #000; 
+}
+.vintage { 
+    background: #795548; color: white; 
+}
+.clasico { 
+    background: #2196f3; color: white; 
+}
+
+.stars { 
+    color: #ffd9004d; 
+}
+.stars .filled { 
+    color: #ffbf00; 
+}
+.stars span { 
+    cursor: default; 
+}

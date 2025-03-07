@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Acceso Denegado</title>
+    <link th:href="@{/styles/estilo.css}" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <h1>📚 Librería Flores</h1>
+        <nav class="main-nav">
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/agregar}" sec:authorize="hasRole('ADMIN')">Agregar Libro</a>
+            <a th:href="@{/buscar}">Buscar</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="error-container">
+            <h2>❌ Acceso Denegado</h2>
+            <p>No tienes permiso para acceder a esta página.</p>
+            <a th:href="@{/}" class="btn">Volver al inicio</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2024 Librería Digital - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

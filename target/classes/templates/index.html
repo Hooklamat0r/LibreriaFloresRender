@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Libros</title>
+    <link th:href="@{/styles/estilo.css}" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <h1>📚 Librería Flores</h1>
+        <nav class="main-nav">
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/agregar}" sec:authorize="hasRole('ADMIN')">Agregar Libro</a>
+            <a th:href="@{/buscar}">Buscar</a>
+        </nav>
+
+        <form method="POST" th:action="@{/logout}" class="logout-form">
+            <button type="submit" class="btn-logout">🚪 Salir</button>
+        </form>
+    </header>
+
+    <main class="container">
+        <h2>Catálogo de Libros</h2>
+        <div th:if="${exito}" class="success-message" th:text="${exito}"></div>
+        <div th:if="${error}" class="error-message" th:text="${error}"></div>
+        
+        <a th:href="@{/agregar}" class="btn" sec:authorize="hasRole('ADMIN')">➕ Nuevo Libro</a>
+        
+        <table class="libros-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año</th>
+                    <th>Género</th>
+                    <th>Puntuación</th>
+                    <th>Estado</th>
+                    <th sec:authorize="hasRole('ADMIN')">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="libro : ${libros}">
+                    <td th:text="${libro.titulo}"></td>
+                    <td th:text="${libro.autor}"></td>
+                    <td th:text="${libro.año}"></td>
+                    <td th:text="${libro.genero}"></td>
+                    <td>
+                        <div class="stars">
+                            <span th:each="i : ${#numbers.sequence(1, 5)}" 
+                                  th:classappend="${i <= libro.puntuacion} ? 'filled' : ''">★</span>
+                        </div>
+                    </td>
+                    <td>
+                        <span th:switch="${libro.año >= 2023 ? 'nuevo' : (libro.año <= 2010 ? 'vintage' : 'clasico')}">
+                            <span th:case="'nuevo'" class="etiqueta nueva">¡NOVEDAD!</span>
+                            <span th:case="'vintage'" class="etiqueta vintage">VINTAGE</span>
+                            <span th:case="*" class="etiqueta clasico">CLÁSICO</span>
+                        </span>
+                    </td>
+                    <td sec:authorize="hasRole('ADMIN')">
+                        <a th:href="@{'/editar/' + ${libro.id}}" class="btn btn-modificar" title="Modificar">✏️</a>
+                        <a th:href="@{'/eliminar/' + ${libro.id}}" class="btn btn-eliminar" title="Eliminar">🗑️</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2024 Librería Digital - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
